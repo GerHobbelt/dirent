@@ -26,7 +26,9 @@
  * under the MIT license.  For all details and documentation, see
  * https://github.com/tronkko/dirent
  */
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,10 +38,10 @@
 #include <locale.h>
 
 static long long list_directory(const char *dirname, int level);
-static int _main(int argc, char *argv[]);
+static int _main(int argc, const char *argv[]);
 
 static int
-_main(int argc, char *argv[])
+_main(int argc, const char *argv[])
 {
 	/* For each directory in command line */
 	int i = 1;
@@ -143,10 +145,16 @@ list_directory(const char *dirname, int level)
 	return total;
 }
 
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_du_main
+#endif
+
 /* Stub for converting arguments to UTF-8 on Windows */
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && !defined(BUILD_MONOLITHIC)
 int
-wmain(int argc, wchar_t *argv[])
+wmain(int argc, const wchar_t *argv[])
 {
 	/* Select UTF-8 locale */
 	setlocale(LC_ALL, ".utf8");
@@ -191,7 +199,7 @@ wmain(int argc, wchar_t *argv[])
 }
 #else
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	return _main(argc, argv);
 }

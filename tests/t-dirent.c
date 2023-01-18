@@ -33,8 +33,13 @@ static void test_filename(void);
 static void test_readdir(void);
 static void test_wreaddir(void);
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_dirent_test_main
+#endif
+
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	(void) argc;
 	(void) argv;

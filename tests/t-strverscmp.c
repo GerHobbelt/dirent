@@ -17,9 +17,14 @@
 #include <dirent.h>
 #include <ctype.h>
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_strverscmp_test_main
+#endif
+
 int
 main(
-	int argc, char *argv[])
+	int argc, const char **argv)
 {
 	(void) argc;
 	(void) argv;

@@ -8,7 +8,9 @@
  */
 
 /* Silence warning about strcmp being insecure (MS Visual Studio) */
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,8 +23,13 @@
 
 static void test_telldir(void);
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_telldir_test_main
+#endif
+
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	(void) argc;
 	(void) argv;

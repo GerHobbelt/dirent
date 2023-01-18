@@ -17,8 +17,13 @@ static int only_readme(const struct dirent *entry);
 static void test_retrieval(void);
 static void test_scan(void);
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_cpp_test_main
+#endif
+
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	(void) argc;
 	(void) argv;

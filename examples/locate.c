@@ -25,7 +25,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 #	include <io.h>
 #	include <fcntl.h>
 #endif
@@ -88,7 +88,7 @@ db_locate(const wchar_t *pattern)
 {
 	int count = 0;
 
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	wchar_t buffer[PATH_MAX + 1];
 
 	/* Open locate.db for read */
@@ -116,7 +116,7 @@ db_match(const wchar_t *fn, const wchar_t *pattern)
 {
 	int found = 0;
 
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	/* Locate zero-terminator from fn */
 	wchar_t *p = wcschr(fn, '\0');
 
@@ -175,7 +175,7 @@ db_read(wchar_t *buffer, size_t max)
 {
 	int ok = 0;
 
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	size_t i = 0;
 	wchar_t c;
 	int done = 0;
@@ -237,7 +237,7 @@ db_read(wchar_t *buffer, size_t max)
 static void
 db_open(void)
 {
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	if (db)
 		return;
 

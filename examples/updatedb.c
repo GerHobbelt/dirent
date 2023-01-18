@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 #	include <io.h>
 #	include <fcntl.h>
 #endif
@@ -46,9 +46,15 @@ static void db_store(const wchar_t *dirname);
 /* Module local variables */
 static FILE *db = NULL;
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_updatedb_main
+#define wmain		main
+#endif
+
 #ifdef _MSC_VER
 int
-wmain(int argc, wchar_t *argv[])
+wmain(int argc, const wchar_t **argv)
 {
 	/* Prepare for unicode output */
 	_setmode(_fileno(stdout), _O_U16TEXT);
@@ -89,7 +95,7 @@ main(int argc, char *argv[])
 static int
 update_directory(const wchar_t *dirname)
 {
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	wchar_t buffer[PATH_MAX + 2];
 	wchar_t *p = buffer;
 	wchar_t *end = &buffer[PATH_MAX];
@@ -164,7 +170,7 @@ update_directory(const wchar_t *dirname)
 static void
 db_store(const wchar_t *dirname)
 {
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	if (!db) {
 		wprintf(L"Database not open\n");
 		exit(EXIT_FAILURE);
@@ -179,7 +185,7 @@ db_store(const wchar_t *dirname)
 static void
 db_open(void)
 {
-#ifdef WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64)
 	if (db)
 		return;
 

@@ -8,7 +8,9 @@
  */
 
 /* Silence warning about fopen being insecure */
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
 
 #include <dirent.h>
 #include <stdio.h>
@@ -21,8 +23,13 @@
 #undef NDEBUG
 #include <assert.h>
 
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_unicode_test_main
+#endif
+
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 #ifdef WIN32
 	wchar_t wpath[MAX_PATH+1];

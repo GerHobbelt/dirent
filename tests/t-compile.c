@@ -15,8 +15,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_compile_test_main
+#endif
+
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	struct dirent *dirp = NULL;
 
