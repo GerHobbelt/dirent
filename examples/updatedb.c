@@ -200,8 +200,7 @@ db_open(void)
 
 /* Close database file */
 static void
-db_close(
-	void)
+db_close(void)
 {
 	if (!db)
 		return;
