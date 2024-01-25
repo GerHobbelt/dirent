@@ -32,6 +32,7 @@ static void cleanup(void);
 #ifdef WIN32
 static wchar_t wpath[MAX_PATH + 1];
 static char path[MAX_PATH + 1];
+#endif
 
 
 #if defined(BUILD_MONOLITHIC)

@@ -37,13 +37,13 @@ static int scan(const char *dirname);
 static int _scan(const char *dirname, const char *pattern);
 static int filter(const struct dirent *entry);
 static int match(const char *name, const char *patt);
-static int _main(int argc, char *argv[]);
+static int _main(int argc, const char **argv);
 
 static const char *filter_pattern = NULL;
 
 
 static int
-_main(int argc, const char *argv[])
+_main(int argc, const char **argv)
 {
 	/* For each directory in command line */
 	int i = 1;
