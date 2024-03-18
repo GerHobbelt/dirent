@@ -23,6 +23,8 @@
 #include <errno.h>
 #include <locale.h>
 
+#include "monolithic_examples.h"
+
 static void output_file(const char *fn);
 static int _main(int argc, const char *argv[]);
 

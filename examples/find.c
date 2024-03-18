@@ -35,6 +35,8 @@
 #include <errno.h>
 #include <locale.h>
 
+#include "monolithic_examples.h"
+
 static int find_directory(const char *dirname);
 static int _main(int argc, const char *argv[]);
 

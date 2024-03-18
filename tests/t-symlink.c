@@ -41,6 +41,8 @@
 #undef NDEBUG
 #include <assert.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_stat(void);
 static void test_dirent(void);
 static int is_link(const char *fn);

@@ -22,6 +22,8 @@
 #undef NDEBUG
 #include <assert.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_macros(void);
 static void test_retrieval(void);
 static void test_nonexistent(void);

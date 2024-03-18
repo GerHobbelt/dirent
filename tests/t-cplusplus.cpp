@@ -10,6 +10,9 @@
 #include <string.h>
 #include <dirent.h>
 #include <assert.h>
+
+#include "../examples/monolithic_examples.h"
+
 using namespace std;
 
 /* Filter and sort functions */

@@ -23,6 +23,8 @@
 #undef NDEBUG
 #include <assert.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_open(void);
 static void initialize(void);
 static void cleanup(void);

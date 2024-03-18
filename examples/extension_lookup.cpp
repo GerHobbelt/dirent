@@ -28,6 +28,8 @@
 #include <cstring>
 #include <string.h>
 
+#include "monolithic_examples.h"
+
 using namespace std;
 
 

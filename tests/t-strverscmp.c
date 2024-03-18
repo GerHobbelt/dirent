@@ -19,6 +19,8 @@
 #undef NDEBUG
 #include <assert.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_compare(void);
 static void test_performance(void);
 static void initialize(void);

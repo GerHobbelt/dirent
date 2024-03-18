@@ -37,6 +37,8 @@
 #include <errno.h>
 #include <locale.h>
 
+#include "monolithic_examples.h"
+
 static long long list_directory(const char *dirname, int level);
 static int _main(int argc, const char *argv[]);
 

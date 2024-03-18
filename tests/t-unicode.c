@@ -23,6 +23,8 @@
 #undef NDEBUG
 #include <assert.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_wcs(void);
 static void test_mbs(void);
 static void test_utf8(void);

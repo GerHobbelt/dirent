@@ -27,6 +27,8 @@
 #undef NDEBUG
 #include <assert.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_filter(void);
 static void test_sort(void);
 static void test_custom(void);

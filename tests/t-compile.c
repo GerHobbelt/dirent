@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../examples/monolithic_examples.h"
+
 static void test_properties(void);
 static void test_length(void);
 static void initialize(void);

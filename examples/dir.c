@@ -40,6 +40,8 @@
 #include <time.h>
 #include <sys/stat.h>
 
+#include "monolithic_examples.h"
+
 #define ERR_MSG_LEN 256
 
 static void list_directory(const char* dirname);

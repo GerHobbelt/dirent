@@ -33,6 +33,8 @@
 #include <locale.h>
 #include <sys/stat.h>
 
+#include "monolithic_examples.h"
+
 static int scan(const char *dirname);
 static int _scan(const char *dirname, const char *pattern);
 static int filter(const struct dirent *entry);
