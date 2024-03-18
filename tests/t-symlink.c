@@ -134,7 +134,7 @@ test_dirent(void)
 
 	closedir(dir);
 #else
-	fprintf(stderr, "Skippped test_dirent\n");
+	fprintf(stderr, "Skipped test_dirent\n");
 #endif
 }
 
