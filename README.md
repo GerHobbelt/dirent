@@ -6,13 +6,16 @@ interface for Microsoft Visual Studio compiler and Microsoft Windows operating
 system.  Using this interface, your C or C++ application can scan files and
 directories on Microsoft Windows and Linux/UNIX!
 
+Learn more about Dirent from the UNIX specification on
+[opengroup.org](https://pubs.opengroup.org/onlinepubs/7908799/xsh/dirent.h.html)!
+
 
 # Requirements 🔥
 
 In order to build unit tests and example programs, you will need:
 
 - [Microsoft Visual Studio](https://visualstudio.microsoft.com/) 2017 or later
-- [CMake](https://cmake.org/) version 3.30 or later
+- [CMake](https://cmake.org/) version 3.13 or later
 
 
 # Installation ⚓
@@ -49,7 +52,7 @@ automatically from GitHub by adding the following code
     include(FetchContent)
     FetchContent_Declare(
         dirent
-        URL https://github.com/tronkko/dirent/archive/refs/tags/1.25.zip
+        URL https://github.com/tronkko/dirent/archive/refs/tags/1.26.zip
     )
     FetchContent_MakeAvailable(dirent)
 
@@ -60,33 +63,28 @@ Link Dirent to executables as
 
 **Method 4**: Download the latest Dirent installation package from
 [GitHub](https://github.com/tronkko/dirent/releases) and unpack files to a
-separate directory.  Create build directory as
+separate directory.  Cd to the directory and generate build files as
 
-    cd %USERPROFILE%\Desktop
-    mkdir build
-    cd build
+    cmake -B build -D CMAKE_INSTALL_PREFIX="%USERPROFILE%\dist" .
 
-Generate build files as
-
-    cmake "-DCMAKE_INSTALL_PREFIX=%USERPROFILE%\dist" ..\dirent
-
-where `%USERPROFILE%\dist` specifies a directory for installable Dirent files
-and `..\dirent` is the root directory of the Dirent package containing this
-README.md file.  Open the generated `dirent.sln` file in Visual Studio and
-build the INSTALL target.  This needs to be done only once.
+where `build` is a new directory for build files, `%USERPROFILE%\dist` is a
+directory for installable Dirent files and `.` is the root directory of the
+Dirent package containing this README.md file.  Open the generated
+`build/dirent.sln` file in Visual Studio and build the INSTALL target.  This
+needs to be done only once.
 
 In order to use Dirent in your own projects, update each project's
 CMakeLists.txt file by adding line
 
-    find_package(Dirent 1.25 REQUIRED)
+    find_package(Dirent 1.26 REQUIRED)
 
 Link Dirent to executables as
 
     add_executable(app app.c)
     target_link_libraries(app dirent)
 
-Generate your project's build files with the `-DCMAKE_INSTALL_PREFIX`
-option as
+If CMake cannot find Dirent, then use `-DCMAKE_INSTALL_PREFIX` option while
+configuring your own project as
 
     cmake "-DCMAKE_INSTALL_PREFIX=%USERPROFILE%\dist" src
 
@@ -180,32 +178,29 @@ The source package contains the following example programs.
 
 Program  | Purpose
 -------- | -----------------------------------------------------------------
-ls       | List files in a directory, e.g. `ls "c:\Program Files"`
-dir      | List files in a directory, e.g. `dir "c:\Program Files"`
-find     | Find files in subdirectories, e.g. `find "c:\Program Files\CMake"`
-updatedb | Build database of files in a drive, e.g. `updatedb c:\`
-locate   | Locate a file from database, e.g. `locate notepad`
-scandir  | Printed sorted list of file names in a directory, e.g. `scandir .`
-du       | Compute disk usage, e.g. `du "C:\Program Files"`
-cat      | Print a text file to screen, e.g. `cat include/dirent.h`
+[ls.c](examples/ls.c) | List files in a directory, e.g. `ls "c:\Program Files"`
+[dir.c](examples/dir.c) | List files in a directory, e.g. `dir "c:\Program Files"`
+[find.c](examples/find.c) | Find files in subdirectories, e.g. `find "c:\Program Files\CMake"`
+[updatedb.c](examples/updatedb.c) | Build database of files in a drive, e.g. `updatedb c:\`
+[locate.c](examples/locate.c) | Locate a file from database, e.g. `locate notepad`
+[scandir.c](examples/scandir.c) | Printed sorted list of file names in a directory, e.g. `scandir .`
+[du.c](examples/du.c) | Compute disk usage, e.g. `du "C:\Program Files"`
+[cat.c](examples/cat.c) | Print a text file to screen, e.g. `cat include/dirent.h`
+[stat.c](examples/stat.c) | Print file/directory permissions, e.g. `stat include/dirent.h`
+[extension\_lookup.cpp](examples/extension_lookup.cpp) | Search files with specific extension
 
-In order to build example programs, open command prompt and create a
-temporary directory for the build files as
+In order to build example programs, unpack the source package to your desktop,
+for example, open command prompt and cd to the root directory of the source
+package.  Generate build files as
 
-    cd %USERPROFILE%\Desktop
-    mkdir build
-    cd build
+    cmake -B build .
 
-Generate build files as
-
-    cmake ..\dirent
-
-where `..\dirent` is the root directory of the Dirent package containing this
-README.md file.  Once CMake is finished, open Visual Studio, load the
-generated `dirent.sln` file from the build directory and build the whole
-solution.  Once the build completes, return to command prompt and cd to the
-Debug directory to run the example programs.  For example, run ls from the
-Debug directory as
+where `build` is a directory for build files and `.` is the root directory of
+the source package containing this README.md file.  Once CMake is finished,
+open Visual Studio, load the generated `dirent.sln` file from the build
+directory and build the whole solution.  Once the build completes, return to
+command prompt and cd to the Debug directory to run the example programs.  For
+example, run ls from the Debug directory as
 
     cd Debug
     .\ls .
@@ -217,21 +212,16 @@ option to CMake command line when configuring your own project.
 
 # Testing 🔬
 
-The project contains unit tests.  In order to build and run the unit tests,
-first create temporary directory for build files as
+This project contains unit tests.  In order to build and run the unit tests,
+first unpack the source package to your desktop, open command prompt and cd to
+the root directory of the source package.  Generate build files as
 
-    cd %USERPROFILE%\Desktop
-    mkdir build
-    cd build
+    cmake -B build .
 
-Generate build files as
-
-    cmake ..\dirent
-
-where `..\dirent` is the root directory of the Dirent package containing this
-README.md file.  Once CMake is finished, open Visual Studio, load the
-generated `dirent.sln` file and build/rebuild the solution "check" to run unit
-tests.
+where `build` is a directory for build files and `.` is the root directory of
+the Dirent package containing this README.md file.  Once CMake is finished,
+open Visual Studio, load the generated `dirent.sln` file from the build
+directory and build/rebuild solution named "check" in Visual Studio.
 
 Tests are not built by default when Dirent is embedded into another project.
 If you want to build tests, then add `-DDIRENT_TESTS=ON` option to CMake

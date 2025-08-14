@@ -33,7 +33,7 @@ _main(int argc, const char *argv[])
 {
 	/* Require at least one file */
 	if (argc == 1) {
-		fprintf(stderr, "Usage: cat filename\n");
+		fprintf(stderr, "Usage: cat filename(s)\n");
 		return EXIT_FAILURE;
 	}
 
