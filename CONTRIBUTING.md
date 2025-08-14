@@ -1,4 +1,4 @@
-# Contributing to Dirent
+# Contributing to Dirent 🐾
 
 Dirent is an open source project and we love to receive contributions from our
 community -- you!  There are many ways to contribute, from writing tutorials
@@ -7,33 +7,63 @@ feature requests, or writing code which can be incorporated into Dirent.
 
 For example, we are looking for contributions which
 
-1. Improve portability of code developed for Unix/Linux to Microsoft Windows.
+1. Improve portability of code developed for Unix/Linux to Microsoft Windows,
 2. Make Dirent easier to use and/or more useful for programmers working on
-   Microsoft Windows platform.
+   Microsoft Windows platform, or
 3. Remove compiler warnings or fix bugs.
 
-## How to Suggest a Feature
 
-We use Github to host code, to track issues and to discuss about Dirent.  If
-you would like to suggest a feature, then open an issue at Github.
+## How to Suggest a Feature 🙋
 
-## How to Report a Bug
+We use GitHub to host code, to track issues and to discuss about Dirent.  If
+you would like to suggest a feature, then feel free to open discussion at
+[GitHub](https://github.com/tronkko/dirent/discussions).
+
+
+## How to Report a Bug 👾
 
 If you have trouble using Dirent, then try to repeat the problem with the
-latest version found at Github.  If the problem remains, then open an issue
-at Github.
+latest version from GitHub.  If the problem persist, then feel free to open an
+issue at [GitHub](https://github.com/tronkko/dirent/issues).
 
-## How to Submit a Fix or an Enhancement
 
-If you wish to contribute code, then fork the repo and test the change in your
-private repo first.  If the change works for you and you would like to donate
-the change back to the community, then make a pull request at Github.
+## How to Submit a Fix or an Enhancement 🔧
 
-Before making a pull request, please consider that:
+**Step 1**: Fork the Repository 🍴
 
-1. We can only accept contributions which are compatible with [MIT Software
-   License](LICENSE).
-2. By making a pull request, you agree to transfer all copyrights to us.
-3. Our code will be reviewed and edited by us.  In particular, we may
-   reformat your code according to the [Linux Kernel Coding
-   Style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
+Start by forking the repository.  You can do this by clicking the "Fork"
+button in the upper right corner of the repository page.  This will create a
+copy of the repository in your GitHub account.
+
+**Step 2**: Clone Your Fork 📥
+
+Clone your newly created fork of the repository to your local machine as
+
+    git clone https://github.com/your-username/dirent.git
+
+where `your-username` is your username at GitHub.
+
+**Step 3**: Create a New Branch 🌿
+
+Create a new branch for the issue or feature you are working on as
+
+    git checkout -b "feature"
+
+where `feature` is a concise name for the branch, e.g. "username-patch".
+
+**Step 4**: Submitting Changes 🚀
+
+After you have made changes to the codebase, stage your changes as
+
+    git add .
+
+Commit changes with a message as
+
+    git commit -m "A brief summary of the commit"
+
+**Step 5**: Create a Pull Request 🌟
+
+Go to your forked repository on GitHub and click on the "New Pull Request"
+button.  This will open a new pull request to the original repository.
+
+Thank you for your contribution! ❤️
