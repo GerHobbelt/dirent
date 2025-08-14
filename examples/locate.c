@@ -46,9 +46,15 @@ static int db_read(wchar_t *buffer, size_t max);
 /* Module local variables */
 static FILE *db = NULL;
 
-#ifdef _MSC_VER
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_locate_main
+#define wmain		main
+#endif
+
+#if defined(_MSC_VER) && !defined(BUILD_MONOLITHIC)
 int
-wmain(int argc, wchar_t *argv[])
+wmain(int argc, const wchar_t **argv)
 {
 	/* Prepare for unicode output */
 	_setmode(_fileno(stdout), _O_U16TEXT);
@@ -71,13 +77,13 @@ wmain(int argc, wchar_t *argv[])
 
 	if (argc < 2) {
 		wprintf(L"Usage: locate pattern\n");
-		exit(EXIT_FAILURE);
+		return EXIT_FAILURE;
 	}
 	return EXIT_SUCCESS;
 }
 #else
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	printf("locate only works on Microsoft Windows\n");
 	return EXIT_SUCCESS;

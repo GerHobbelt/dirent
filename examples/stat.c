@@ -33,11 +33,14 @@
 #	include <unistd.h>
 #endif
 
+#include "monolithic_examples.h"
+
+
 static void stat_file(const char *fn);
-static int _main(int argc, char *argv[]);
+static int _main(int argc, const char *argv[]);
 
 static int
-_main(int argc, char *argv[])
+_main(int argc, const char* argv[])
 {
 	/* Require at least one file */
 	if (argc == 1) {
@@ -109,10 +112,16 @@ stat_file(const char *fn)
 	printf("mtime: %s", ctime(&buf.st_mtime));
 }
 
+
+
+#if defined(BUILD_MONOLITHIC)
+#define main		dirent_stat_main
+#endif
+
 /* Convert arguments to UTF-8 */
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && !defined(BUILD_MONOLITHIC)
 int
-wmain(int argc, wchar_t *argv[])
+wmain(int argc, const wchar_t *argv[])
 {
 	/* Select UTF-8 locale */
 	setlocale(LC_ALL, ".utf8");
@@ -158,7 +167,7 @@ wmain(int argc, wchar_t *argv[])
 }
 #else
 int
-main(int argc, char *argv[])
+main(int argc, const char **argv)
 {
 	return _main(argc, argv);
 }
