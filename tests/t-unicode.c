@@ -385,7 +385,7 @@ initialize(void)
 	BOOL ok = CreateDirectoryW(wpath, NULL);
 	if (!ok) {
 		DWORD e = GetLastError();
-		wprintf(L"Cannot create directory %ls (code %u)\n", wpath, e);
+		wprintf(L"Cannot create directory %ls (code %lu)\n", wpath, (unsigned long int)e);
 		abort();
 	}
 

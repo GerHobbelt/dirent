@@ -258,7 +258,7 @@ initialize(void)
 	DWORD flags1 = SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE;
 	if (!CreateSymbolicLinkA(link1, file, flags1)) {
 		/* Developer mode not activated? */
-		fprintf(stderr, "Create file symlink error: %d\n", GetLastError());
+		fprintf(stderr, "Create file symlink error: %lu\n", (unsigned long int)GetLastError());
 		fprintf(stderr, "Skipped\n");
 		exit(/*Skip*/ 77);
 	}
@@ -276,7 +276,7 @@ initialize(void)
 	DWORD flags2 = SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE
 		| SYMBOLIC_LINK_FLAG_DIRECTORY;
 	if (!CreateSymbolicLinkA(link2, subdir, flags2)) {
-		fprintf(stderr, "Create file symlink error: %d\n", GetLastError());
+		fprintf(stderr, "Create file symlink error: %lu\n", (unsigned long int)GetLastError());
 		fprintf(stderr, "Skipped\n");
 		exit(/*Skip*/ 77);
 	}
